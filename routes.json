@@ -1,0 +1,6 @@
+{
+ "/api/*": "/$1",
+ "/:resource/:id/show": "/:resource/:id",
+ "/posts/:category": "/Bank_data?category=:category",
+ "/articles?id=:id": "/Bank_data/:idbankinfo"
+}

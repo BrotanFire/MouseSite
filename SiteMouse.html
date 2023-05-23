@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<title>Something Fun</title>
+</head>
+<body>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Mouse Practice</a>
+  <input class="form-control form-control-dark " type="text" placeholder="Search" aria-label="Search" oninput = "Search(this.value)">
+  <div class="navbar-nav"> </div>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+          <button type="button" class="btn btn-primary" onClick="ShowBankInfo()">Данные из банка</button>
+          <button type="button" class="btn btn-primary" onClick="ShowBank()">Банки</button>
+          <button type="button" class="btn btn-primary" onClick="ShowContract()">Договоры</button>
+        </div>
+      </div>
+    </nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-x-scroll" >
+      <h2 id = "TableName"></h2>
+      <div class="table table-striped">
+        <table class="table table-borderless">
+          <thead class="thead">
+            <tr id ="col_name_replace"> </tr>
+          </thead>
+          <tbody id = "col_info_replace">
+			  
+            </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="js/bootstrap.bundle.min.js" ></script> 
+<script  src="js/Bank_Data_Script.js"></script> 
+<script src="js/jquery-3.6.4.js"></script>
+<script src="js/Send_Data_Script.js"></script>
+	<script src="js/SearchScript.js"></script>
+</body>
+<div class="modal fade" id="BankInfoChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Заголовок модального окна</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col">BIK
+              <input type="text" class="form-control" id="Bank_Info_Bik_Input">
+            </div>
+            <div class="col">idcharge
+              <input type="text" class="form-control" id="Bank_Info_idcharge_Input">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">dPeriod
+              <input class="form-control" type="date" value="" id="Bank_Info_dPeriod_Input">
+            </div>
+            <div class="col">stabnum
+              <input type="text" class="form-control" id="Bank_Info_stabnum_Input">
+            </div>
+            <div class="col">FIO
+              <input type="text" class="form-control" id="Bank_Info_FIO_Input">
+            </div>
+          </div>
+			<div class="row">
+            <div class="col">nMoney
+              <input type="text" class="form-control" id="Bank_Info_nMoney_Input">
+            </div>
+            <div class="col">idkadr
+              <input type="text" class="form-control" id="Bank_Info_idkadr_Input">
+            </div>
+            <div class="col">idkadr_tmp
+              <input type="text" class="form-control" id="Bank_Info_idkadr_tmp_Input">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary" type="submit" id="accept_btn_bank_info" data-bs-dismiss="modal">Понял</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="BankChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Заголовок модального окна</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col">Bank_Name
+              <input type="text" class="form-control" id="Bank_Bank_Name_Input">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">correspondent_account_of_the_bank
+              <input type="text" class="form-control" id="Bank_correspondent_account_of_the_bank_Input">
+            </div>
+            <div class="col">location_bank
+              <input type="text" class="form-control" id="Bank_location_bank_Input">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary" id="accept_btn_bank" data-bs-dismiss="modal">Понял</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="ContractChange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Заголовок модального окна</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col">idkadr
+              <input type="text" class="form-control" id="Contract_idkadr_Input">
+            </div>
+            <div class="col">stabnum
+              <input type="text" class="form-control" id="Contract_stabnum_Input">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">idcharge
+              <input type="text" class="form-control" id="Contract_idcharge_Input">
+            </div>
+            <div class="col">dogovorDate
+              <input class="form-control" type="date" value="" id="Contract_dogovorDate_Input">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary" id = "accept_btn_cont" data-bs-dismiss="modal">Понял</button>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
